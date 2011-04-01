@@ -15,5 +15,18 @@ namespace Microsoft_Project_to_Google_Calendar
         {
             InitializeComponent();
         }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.textBoxFileName.Text = this.openFileDialog1.FileName;
+            }
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

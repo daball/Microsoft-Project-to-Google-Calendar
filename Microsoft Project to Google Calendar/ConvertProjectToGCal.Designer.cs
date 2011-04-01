@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxCalendar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGo = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -59,16 +59,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "&Path:";
             // 
-            // textBox1
+            // textBoxFileName
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxFileName.Location = new System.Drawing.Point(80, 13);
+            this.textBoxFileName.Name = "textBoxFileName";
+            this.textBoxFileName.Size = new System.Drawing.Size(295, 20);
+            this.textBoxFileName.TabIndex = 1;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Microsoft Project File (*.mpp)|*.mpp|All files (*.*)|*.*";
+            this.openFileDialog1.Title = "Open Microsoft Project File...";
             // 
             // buttonBrowse
             // 
@@ -78,6 +80,7 @@
             this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "B&rowse...";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // label2
             // 
@@ -110,7 +113,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxFileName);
             this.groupBox1.Controls.Add(this.buttonBrowse);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -122,11 +125,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.textBoxCalendar);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.textBoxPassword);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBoxUser);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 50);
@@ -136,12 +139,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Google Account Information";
             // 
-            // textBox4
+            // textBoxCalendar
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 39);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(356, 20);
-            this.textBox4.TabIndex = 8;
+            this.textBoxCalendar.Location = new System.Drawing.Point(100, 39);
+            this.textBoxCalendar.Name = "textBoxCalendar";
+            this.textBoxCalendar.Size = new System.Drawing.Size(356, 20);
+            this.textBoxCalendar.TabIndex = 8;
             // 
             // label4
             // 
@@ -152,12 +155,13 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Calendar &Name:";
             // 
-            // textBox3
+            // textBoxPassword
             // 
-            this.textBox3.Location = new System.Drawing.Point(324, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 20);
-            this.textBox3.TabIndex = 6;
+            this.textBoxPassword.Location = new System.Drawing.Point(324, 16);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(132, 20);
+            this.textBoxPassword.TabIndex = 6;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -168,12 +172,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "P&assword:";
             // 
-            // textBox2
+            // textBoxUser
             // 
-            this.textBox2.Location = new System.Drawing.Point(80, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBoxUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBoxUser.Location = new System.Drawing.Point(80, 16);
+            this.textBoxUser.Name = "textBoxUser";
+            this.textBoxUser.Size = new System.Drawing.Size(132, 20);
+            this.textBoxUser.TabIndex = 4;
             // 
             // tableLayoutPanel2
             // 
@@ -213,6 +219,7 @@
             this.buttonExit.TabIndex = 10;
             this.buttonExit.Text = "&Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // ConvertProjectToGCal
             // 
@@ -236,17 +243,17 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxFileName;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxCalendar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button buttonGo;
