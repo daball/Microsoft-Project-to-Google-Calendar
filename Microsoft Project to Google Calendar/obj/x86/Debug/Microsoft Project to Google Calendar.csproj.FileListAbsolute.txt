@@ -23,3 +23,4 @@ C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project t
 C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\IKVM.OpenJDK.Beans.dll
 C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\IKVM.OpenJDK.Misc.dll
 C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\IKVM.OpenJDK.XML.Parse.dll
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\Microsoft Project to Google Calendar.exe.config
