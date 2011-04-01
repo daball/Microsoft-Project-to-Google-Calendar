@@ -26,11 +26,11 @@ namespace Microsoft_Project_to_Google_Calendar
             InitializeComponent();
         }
 
-        private void buttonBrowse_Click(object sender, EventArgs e)
+        private void toolStripButtonBrowse_Click(object sender, EventArgs e)
         {
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.textBoxFileName.Text = this.openFileDialog1.FileName;
+                this.toolStripComboBoxPath.Text = this.openFileDialog1.FileName;
             }
         }
 
@@ -45,21 +45,81 @@ namespace Microsoft_Project_to_Google_Calendar
             about.ShowDialog();
         }
 
-        private void buttonGo_Click(object sender, EventArgs e)
+        private void toolStripComboBoxPath_TextChanged(object sender, EventArgs e)
         {
-            //read MS Project file
-            ProjectFile projectFile = this.readProjectFile(this.textBoxFileName.Text);
-            Console.WriteLine("Step 1: Opened MS Project File \"" + this.textBoxFileName.Text + "\".");
-            
+            //check for valid file name
+            if (!System.IO.File.Exists(toolStripComboBoxPath.Text))
+            {
+                //otherwise bounce and let the user keep typing
+                return;
+            }
+
+            //since the file name is valid, let's "try" to open the MS Project file
+            ProjectFile projectFile = null;
+            try
+            {
+                projectFile = this.readProjectFile(this.toolStripComboBoxPath.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("This file exists but it is not a valid Microsoft Project file.\n\nInner exception details:\n"+ex.ToString());
+
+                //bounce and let the user try again
+                return;
+            }
+            System.Diagnostics.Debug.WriteLine("Step 1: Opened MS Project File \"" + this.toolStripComboBoxPath.Text + "\".");
+
             //get task list from open project file
             Task[] tasks = this.getAllProjectTasks(projectFile);
-            Console.WriteLine("Step 2: Returned " + tasks.Length + " tasks.");
+            System.Diagnostics.Debug.WriteLine("Step 2: Returned " + tasks.Length + " tasks.");
 
-            //debug: print all tasks found
+            //erase the last list, if any
+            listViewTasks.Items.Clear();
+
             foreach (Task task in tasks)
             {
-                Console.WriteLine(" >> Task by name \"" + task.getName() + "\" starting on \"" + task.getStart().toString() + "\" and ending on \"" + task.getStop().toString() + "\".");
+                //storage
+                java.util.Date startDate = task.getStart();
+                java.util.Date stopDate = task.getStop();
+                string name = task.getName();
+
+                //debug: print each task found to the stderr
+                System.Diagnostics.Debug.Write(" >> Task by name \"" + name + "\"");
+                if (startDate != null && stopDate != null)
+                    System.Diagnostics.Debug.WriteLine(" starting on \"" + startDate.toString() + "\" and ending on \"" + stopDate + "\".");
+                else if (startDate != null)
+                    System.Diagnostics.Debug.WriteLine(" starting on \"" + startDate.toString() + "\".");
+                else if (stopDate != null)
+                    System.Diagnostics.Debug.WriteLine(" ending on \"" + startDate.toString() + "\".");
+                else
+                    System.Diagnostics.Debug.WriteLine(".");
+
+                //in order to be considered data for the production app,
+                //it must contain a start date and a task name
+                if (name != null && name.Trim().Length > 0 && startDate != null)
+                {
+                    //it must contain some valid data, so let's enroll it into our list
+
+                    //first generate a ListViewItem and fill it up
+                    ListViewItem item = new ListViewItem();
+                    item.Text = task.getName().Trim();
+                    item.SubItems.Add(startDate.toString());
+                    if (stopDate != null) item.SubItems.Add(stopDate.toString());                        
+
+                    //mark this tag with the Task object, we'll cast it back out later from the checked items list
+                    item.Tag = task;
+
+                    //check the item, by default we'd want all the events migrated
+                    item.Checked = true;
+
+                    //now add this to the list
+                    this.listViewTasks.Items.Add(item);
+                }
             }
+        }
+
+        private void buttonGo_Click(object sender, EventArgs e)
+        {            
         }
 
         /// <summary>
@@ -142,9 +202,15 @@ namespace Microsoft_Project_to_Google_Calendar
             return eventEntry;
         }
 
-        protected void updateGoogleCalendar()
+        /// <summary>
+        /// Updates an open Google Calendar with all the MS Project tasks.
+        /// </summary>
+        /// <param name="tasks"></param>
+        /// <param name="calendarService"></param>
+        protected void insertProjectTasksIntoGoogleCalendar(Task[] tasks, CalendarService calendarService)
         {
 
         }
+
     }
 }
