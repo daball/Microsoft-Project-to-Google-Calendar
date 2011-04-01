@@ -70,7 +70,8 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Microsoft Project File (*.mpp)|*.mpp|All files (*.*)|*.*";
+            this.openFileDialog1.Filter = "Microsoft Project File (*.mpp;*.mpx;*.mpt;*.mspdi)|*.mpp;*.mpx;*.mpt;*.mspdi|All " +
+                "files (*.*)|*.*";
             this.openFileDialog1.Title = "Open Microsoft Project File...";
             // 
             // buttonBrowse
@@ -212,6 +213,7 @@
             this.buttonGo.TabIndex = 9;
             this.buttonGo.Text = "&Convert and Copy to Google Calendar";
             this.buttonGo.UseVisualStyleBackColor = true;
+            this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
             // 
             // buttonExit
             // 
