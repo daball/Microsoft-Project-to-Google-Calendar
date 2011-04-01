@@ -44,6 +44,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGo = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -183,11 +184,15 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.42433F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.57567F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel2.Controls.Add(this.buttonGo, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.buttonExit, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonExit, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonAbout, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 118);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -203,7 +208,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonGo.Location = new System.Drawing.Point(3, 3);
             this.buttonGo.Name = "buttonGo";
-            this.buttonGo.Size = new System.Drawing.Size(225, 36);
+            this.buttonGo.Size = new System.Drawing.Size(201, 36);
             this.buttonGo.TabIndex = 9;
             this.buttonGo.Text = "&Convert and Copy to Google Calendar";
             this.buttonGo.UseVisualStyleBackColor = true;
@@ -213,23 +218,39 @@
             this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExit.Location = new System.Drawing.Point(234, 3);
+            this.buttonExit.Location = new System.Drawing.Point(340, 3);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(225, 36);
-            this.buttonExit.TabIndex = 10;
+            this.buttonExit.Size = new System.Drawing.Size(119, 36);
+            this.buttonExit.TabIndex = 11;
             this.buttonExit.Text = "&Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // buttonAbout
+            // 
+            this.buttonAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAbout.Location = new System.Drawing.Point(210, 3);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(124, 36);
+            this.buttonAbout.TabIndex = 10;
+            this.buttonAbout.Text = "About...";
+            this.buttonAbout.UseVisualStyleBackColor = true;
+            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
             // ConvertProjectToGCal
             // 
+            this.AcceptButton = this.buttonGo;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonExit;
             this.ClientSize = new System.Drawing.Size(468, 163);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ConvertProjectToGCal";
             this.Text = "Convert Microsoft Project to Google Calendar";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -258,6 +279,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button buttonGo;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonAbout;
     }
 }
 

@@ -28,5 +28,11 @@ namespace Microsoft_Project_to_Google_Calendar
         {
             this.Close();
         }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.ShowDialog();
+        }
     }
 }
