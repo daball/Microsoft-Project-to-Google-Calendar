@@ -1,0 +1,9 @@
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\Microsoft Project to Google Calendar.exe
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\bin\Debug\Microsoft Project to Google Calendar.pdb
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\Microsoft_Project_to_Google_Calendar.ConvertProjectToGCal.resources
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\Microsoft_Project_to_Google_Calendar.Properties.Resources.resources
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\Microsoft Project to Google Calendar.exe
+C:\Users\David\Projects\Microsoft Project to Google Calendar\Microsoft Project to Google Calendar\obj\x86\Debug\Microsoft Project to Google Calendar.pdb
