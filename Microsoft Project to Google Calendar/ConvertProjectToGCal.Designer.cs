@@ -32,38 +32,61 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1_Project = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBoxCalendar = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxUser = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonAbout = new System.Windows.Forms.Button();
-            this.buttonGo = new System.Windows.Forms.Button();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxPath = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButtonBrowse = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1About = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listViewTasks = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1_Project = new System.Windows.Forms.TabPage();
+            this.tabPage2_Transfer = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxUserName = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxPassword = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonLogin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelGoogle1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listViewCalendars = new System.Windows.Forms.ListView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listBoxResults = new System.Windows.Forms.ListBox();
+            this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGo = new System.Windows.Forms.ToolStripButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1_Project.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1_Project.SuspendLayout();
+            this.tabPage2_Transfer.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.toolStrip3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -79,181 +102,44 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.90244F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.09756F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 455);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.3494F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.6506F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(745, 453);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.statusStrip2);
             this.groupBox1.Controls.Add(this.toolStrip1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(664, 51);
+            this.groupBox1.Size = new System.Drawing.Size(739, 65);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Step 1. Select your Microsoft Project File.";
+            this.groupBox1.Text = "Step 1. Open your Microsoft® Project File";
             // 
-            // tabControl1
+            // statusStrip2
             // 
-            this.tabControl1.Controls.Add(this.tabPage1_Project);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(684, 487);
-            this.tabControl1.TabIndex = 5;
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelFile});
+            this.statusStrip2.Location = new System.Drawing.Point(3, 40);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(733, 22);
+            this.statusStrip2.TabIndex = 4;
+            this.statusStrip2.Text = "statusStrip2";
             // 
-            // tabPage1_Project
+            // toolStripStatusLabelFile
             // 
-            this.tabPage1_Project.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1_Project.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1_Project.Name = "tabPage1_Project";
-            this.tabPage1_Project.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1_Project.Size = new System.Drawing.Size(676, 461);
-            this.tabPage1_Project.TabIndex = 0;
-            this.tabPage1_Project.Text = "Import Tasks";
-            this.tabPage1_Project.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(538, 374);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBoxCalendar);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBoxPassword);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBoxUser);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(9, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 183);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Google Account Information";
-            // 
-            // textBoxCalendar
-            // 
-            this.textBoxCalendar.Location = new System.Drawing.Point(100, 39);
-            this.textBoxCalendar.Name = "textBoxCalendar";
-            this.textBoxCalendar.Size = new System.Drawing.Size(356, 20);
-            this.textBoxCalendar.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Calendar &Name:";
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(324, 16);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(132, 20);
-            this.textBoxPassword.TabIndex = 6;
-            this.textBoxPassword.UseSystemPasswordChar = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(262, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "P&assword:";
-            // 
-            // textBoxUser
-            // 
-            this.textBoxUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBoxUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBoxUser.Location = new System.Drawing.Point(80, 16);
-            this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(132, 20);
-            this.textBoxUser.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "&User Name:";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.42433F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.57567F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonExit, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.buttonAbout, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.buttonGo, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(39, 223);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(461, 42);
-            this.tableLayoutPanel2.TabIndex = 7;
-            // 
-            // buttonExit
-            // 
-            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonExit.Location = new System.Drawing.Point(339, 3);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(119, 36);
-            this.buttonExit.TabIndex = 11;
-            this.buttonExit.Text = "&Exit";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            // 
-            // buttonAbout
-            // 
-            this.buttonAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAbout.Location = new System.Drawing.Point(209, 3);
-            this.buttonAbout.Name = "buttonAbout";
-            this.buttonAbout.Size = new System.Drawing.Size(124, 36);
-            this.buttonAbout.TabIndex = 10;
-            this.buttonAbout.Text = "About...";
-            this.buttonAbout.UseVisualStyleBackColor = true;
-            // 
-            // buttonGo
-            // 
-            this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGo.Location = new System.Drawing.Point(3, 3);
-            this.buttonGo.Name = "buttonGo";
-            this.buttonGo.Size = new System.Drawing.Size(200, 36);
-            this.buttonGo.TabIndex = 9;
-            this.buttonGo.Text = "&Convert and Copy to Google Calendar";
-            this.buttonGo.UseVisualStyleBackColor = true;
+            this.toolStripStatusLabelFile.Name = "toolStripStatusLabelFile";
+            this.toolStripStatusLabelFile.Size = new System.Drawing.Size(280, 17);
+            this.toolStripStatusLabelFile.Text = "Status: Waiting for a Microsoft® Project file to load.";
             // 
             // toolStrip1
             // 
@@ -261,10 +147,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripComboBoxPath,
-            this.toolStripButtonBrowse});
+            this.toolStripButtonBrowse,
+            this.toolStripSeparator1,
+            this.toolStripButton1About});
             this.toolStrip1.Location = new System.Drawing.Point(3, 16);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(658, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(733, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -276,7 +164,7 @@
             // 
             // toolStripComboBoxPath
             // 
-            this.toolStripComboBoxPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.toolStripComboBoxPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.toolStripComboBoxPath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.toolStripComboBoxPath.Name = "toolStripComboBoxPath";
             this.toolStripComboBoxPath.Size = new System.Drawing.Size(420, 25);
@@ -292,16 +180,31 @@
             this.toolStripButtonBrowse.Text = "B&rowse...";
             this.toolStripButtonBrowse.Click += new System.EventHandler(this.toolStripButtonBrowse_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1About
+            // 
+            this.toolStripButton1About.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1About.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1About.Image")));
+            this.toolStripButton1About.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1About.Name = "toolStripButton1About";
+            this.toolStripButton1About.Size = new System.Drawing.Size(100, 22);
+            this.toolStripButton1About.Text = "&About this App...";
+            this.toolStripButton1About.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listViewTasks);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 60);
+            this.groupBox3.Location = new System.Drawing.Point(3, 74);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(664, 347);
+            this.groupBox3.Size = new System.Drawing.Size(739, 336);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Step 2. Select the tasks you would like to import into Google Calendar.";
+            this.groupBox3.Text = "Step 2. &Select the tasks you would like to import into Google® Calendar";
             // 
             // listViewTasks
             // 
@@ -316,7 +219,7 @@
             this.listViewTasks.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewTasks.Location = new System.Drawing.Point(3, 16);
             this.listViewTasks.Name = "listViewTasks";
-            this.listViewTasks.Size = new System.Drawing.Size(658, 328);
+            this.listViewTasks.Size = new System.Drawing.Size(733, 317);
             this.listViewTasks.TabIndex = 0;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
@@ -333,30 +236,293 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Stop/Due Date";
+            this.columnHeader3.Text = "Finish/Due Date";
             this.columnHeader3.Width = 240;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonNext);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 416);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(739, 34);
+            this.panel1.TabIndex = 6;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonNext.Location = new System.Drawing.Point(658, 6);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonNext.TabIndex = 0;
+            this.buttonNext.Text = "&Next Page";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1_Project);
+            this.tabControl1.Controls.Add(this.tabPage2_Transfer);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(759, 485);
+            this.tabControl1.TabIndex = 5;
+            // 
+            // tabPage1_Project
+            // 
+            this.tabPage1_Project.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1_Project.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1_Project.Name = "tabPage1_Project";
+            this.tabPage1_Project.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1_Project.Size = new System.Drawing.Size(751, 459);
+            this.tabPage1_Project.TabIndex = 0;
+            this.tabPage1_Project.Text = "A. Import Tasks from Microsoft® Project";
+            this.tabPage1_Project.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2_Transfer
+            // 
+            this.tabPage2_Transfer.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage2_Transfer.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2_Transfer.Name = "tabPage2_Transfer";
+            this.tabPage2_Transfer.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2_Transfer.Size = new System.Drawing.Size(751, 459);
+            this.tabPage2_Transfer.TabIndex = 1;
+            this.tabPage2_Transfer.Text = "B. Transfer Tasks to Google® Calendar";
+            this.tabPage2_Transfer.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox4, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox5, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 3);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.60976F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.39024F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 213F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(745, 453);
+            this.tableLayoutPanel3.TabIndex = 9;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.toolStrip2);
+            this.groupBox2.Controls.Add(this.statusStrip1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(739, 67);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Step 3. Enter your Google® Account credentials";
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel2,
+            this.toolStripTextBoxUserName,
+            this.toolStripLabel3,
+            this.toolStripTextBoxPassword,
+            this.toolStripButtonLogin,
+            this.toolStripSeparator2,
+            this.toolStripButton2});
+            this.toolStrip2.Location = new System.Drawing.Point(3, 16);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(733, 25);
+            this.toolStrip2.TabIndex = 11;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(68, 22);
+            this.toolStripLabel2.Text = "&User Name:";
+            // 
+            // toolStripTextBoxUserName
+            // 
+            this.toolStripTextBoxUserName.Name = "toolStripTextBoxUserName";
+            this.toolStripTextBoxUserName.Size = new System.Drawing.Size(160, 25);
+            this.toolStripTextBoxUserName.TextChanged += new System.EventHandler(this.toolStripTextBoxUserName_TextChanged);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(60, 22);
+            this.toolStripLabel3.Text = "&Password:";
+            // 
+            // toolStripTextBoxPassword
+            // 
+            this.toolStripTextBoxPassword.Name = "toolStripTextBoxPassword";
+            this.toolStripTextBoxPassword.Size = new System.Drawing.Size(160, 25);
+            this.toolStripTextBoxPassword.TextChanged += new System.EventHandler(this.toolStripTextBoxPassword_TextChanged);
+            // 
+            // toolStripButtonLogin
+            // 
+            this.toolStripButtonLogin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonLogin.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLogin.Image")));
+            this.toolStripButtonLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLogin.Name = "toolStripButtonLogin";
+            this.toolStripButtonLogin.Size = new System.Drawing.Size(50, 22);
+            this.toolStripButtonLogin.Text = "&Login...";
+            this.toolStripButtonLogin.Click += new System.EventHandler(this.toolStripButtonLogin_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(100, 22);
+            this.toolStripButton2.Text = "&About this App...";
+            this.toolStripButton2.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelGoogle1});
+            this.statusStrip1.Location = new System.Drawing.Point(3, 42);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(733, 22);
+            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelGoogle1
+            // 
+            this.toolStripStatusLabelGoogle1.Name = "toolStripStatusLabelGoogle1";
+            this.toolStripStatusLabelGoogle1.Size = new System.Drawing.Size(406, 17);
+            this.toolStripStatusLabelGoogle1.Text = "Status: Waiting for the user name and password for your Google® Account.";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listViewCalendars);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(3, 76);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(739, 126);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Step 4. Select your Google® &Calendar";
+            // 
+            // listViewCalendars
+            // 
+            this.listViewCalendars.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listViewCalendars.Location = new System.Drawing.Point(3, 16);
+            this.listViewCalendars.Name = "listViewCalendars";
+            this.listViewCalendars.Size = new System.Drawing.Size(733, 104);
+            this.listViewCalendars.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listViewCalendars.TabIndex = 0;
+            this.listViewCalendars.UseCompatibleStateImageBehavior = false;
+            this.listViewCalendars.View = System.Windows.Forms.View.List;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listBoxResults);
+            this.groupBox5.Controls.Add(this.toolStrip3);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(3, 208);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(739, 207);
+            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Step 5. Transfer tasks selected in Step 2 from Microsoft® Project to Google® Cale" +
+                "ndar events for the calendar selected in Step 4";
+            // 
+            // listBoxResults
+            // 
+            this.listBoxResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxResults.FormattingEnabled = true;
+            this.listBoxResults.Location = new System.Drawing.Point(3, 41);
+            this.listBoxResults.Name = "listBoxResults";
+            this.listBoxResults.Size = new System.Drawing.Size(733, 163);
+            this.listBoxResults.TabIndex = 1;
+            // 
+            // toolStrip3
+            // 
+            this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGo});
+            this.toolStrip3.Location = new System.Drawing.Point(3, 16);
+            this.toolStrip3.Name = "toolStrip3";
+            this.toolStrip3.Size = new System.Drawing.Size(733, 25);
+            this.toolStrip3.TabIndex = 0;
+            this.toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripButtonGo
+            // 
+            this.toolStripButtonGo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonGo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGo.Image")));
+            this.toolStripButtonGo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGo.Name = "toolStripButtonGo";
+            this.toolStripButtonGo.Size = new System.Drawing.Size(35, 22);
+            this.toolStripButtonGo.Text = "&Go...";
+            this.toolStripButtonGo.Click += new System.EventHandler(this.toolStripButtonGo_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.buttonClose);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 421);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(739, 29);
+            this.panel2.TabIndex = 11;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(658, 6);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 0;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Visible = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // ConvertProjectToGCal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 487);
+            this.ClientSize = new System.Drawing.Size(759, 485);
             this.Controls.Add(this.tabControl1);
             this.Name = "ConvertProjectToGCal";
-            this.Text = "Convert Microsoft Project to Google Calendar";
+            this.Text = "Convert Microsoft® Project to Google® Calendar";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1_Project.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1_Project.ResumeLayout(false);
+            this.tabPage2_Transfer.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.toolStrip3.ResumeLayout(false);
+            this.toolStrip3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -368,18 +534,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1_Project;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage2_Transfer;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxCalendar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxUser;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonAbout;
-        private System.Windows.Forms.Button buttonGo;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxPath;
@@ -389,6 +545,31 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1About;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxUserName;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxPassword;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLogin;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGoogle1;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelFile;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListView listViewCalendars;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListBox listBoxResults;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGo;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
 
