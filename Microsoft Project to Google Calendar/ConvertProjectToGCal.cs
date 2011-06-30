@@ -297,6 +297,7 @@ namespace Microsoft_Project_to_Google_Calendar
             //clear results from prior runs
             this.listBoxResults.Items.Clear();
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Beginning process of importing Microsoft® Project tasks into events.");
+            int addedEvents = 0; //count
             foreach (ListViewItem taskItem in this.listViewTasks.CheckedItems)
             {
                 //grab the Microsoft® Project Task from the list item
@@ -319,13 +320,14 @@ namespace Microsoft_Project_to_Google_Calendar
                     System.Diagnostics.Debug.WriteLine("[*] Adding " + eventEntry.Title.Text + " at " + calendarEntry.Links[0].AbsoluteUri + ".");
                     AtomEntry insertedEntry = calendarService.Insert(new Uri(calendarEntry.Links[0].AbsoluteUri), eventEntry);
                     this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Added " + eventEntry.Title.Text + ". Updated at: " + insertedEntry.Updated.ToString());
+                    addedEvents++;
                 }
                 catch (Exception ex)
                 {
                     this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Error adding " + eventEntry.Title.Text + ". Details: " + ex.Message);
                 }
             }
-            this.toolStripStatusLabelGoogle1.Text = "Success: Added all " + this.listBoxResults.Items.Count + " tasks as events to your " + calendarEntry.Title.Text + " Google® Calendar.";
+            this.toolStripStatusLabelGoogle1.Text = "Success: Added all " + addedEvents + " tasks as events to your " + calendarEntry.Title.Text + " Google® Calendar.";
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Import is complete! Thank you for using this tool.");
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Visit http://www.daball.me/ for more about the author.");
             this.buttonClose.Show();
