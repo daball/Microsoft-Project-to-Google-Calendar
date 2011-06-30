@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -343,10 +344,14 @@ namespace Microsoft_Project_to_Google_Calendar
         /// <returns></returns>
         protected ProjectFile readProjectFile(String mppFile)
         {
+            //read project file in
+            byte[] projFile = File.ReadAllBytes(mppFile);
+            //get Java InputStream from file stream
+            java.io.ByteArrayInputStream bais = new java.io.ByteArrayInputStream(projFile);
             //get the reader
-            ProjectReader reader = ProjectReaderUtility.getProjectReader(mppFile);
+            ProjectReader reader = ProjectReaderUtility.getProjectReader(Path.GetFileNameWithoutExtension(mppFile));
             //read the file out
-            return reader.read(mppFile);
+            return reader.read(bais);
         }
 
         /// <summary>
