@@ -13,10 +13,13 @@ using net.sf.mpxj;
 using net.sf.mpxj.mpp;
 using net.sf.mpxj.reader;
 
-//needed for Google® Data API (to handle Google® Calendar)
-using Google.GData.Calendar;
-using Google.GData.Client;
-using Google.GData.Extensions;
+//needed for Google® Calendar API 3
+using Google.Apis.Calendar.v3;
+using Google.Apis.Services;
+using Google.Apis.Auth.OAuth2;
+using System.Threading;
+using Google.Apis.Util.Store;
+using Google.Apis.Calendar.v3.Data;
 
 namespace Microsoft_Project_to_Google_Calendar
 {
@@ -26,13 +29,11 @@ namespace Microsoft_Project_to_Google_Calendar
         CalendarService calendarService = null;
 
         //this will be null until well after login, test accordingly
-        List<CalendarEntry> calendars = null;
+        List<CalendarListEntry> calendars = null;
 
         public ConvertProjectToGCal()
         {
             InitializeComponent();
-            //turn on the password char for the Google® password field
-            this.toolStripTextBoxPassword.TextBox.UseSystemPasswordChar = true;
             //default to user's documents folder
             this.toolStripComboBoxPath.Text = this.openFileDialog1.InitialDirectory =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -119,8 +120,8 @@ namespace Microsoft_Project_to_Google_Calendar
                 DateTime finishDate = DateTime.MinValue;
 
                 //write these down
-                java.util.Date taskStart = task.getStart();
-                java.util.Date taskFinish = task.getFinish();
+                java.util.Date taskStart = task.Start;
+                java.util.Date taskFinish = task.Finish;
 
                 //now split them up
                 string[] taskStartComponents = new string[] { };
@@ -142,7 +143,7 @@ namespace Microsoft_Project_to_Google_Calendar
                     "yyyy MMM dd", System.Globalization.CultureInfo.InvariantCulture
                     );
 
-                string name = task.getName();
+                string name = task.Name;
 
                 //debug: print each task found to the stderr
                 System.Diagnostics.Debug.Write(" >> Task by name \"" + name + "\"");
@@ -163,7 +164,7 @@ namespace Microsoft_Project_to_Google_Calendar
 
                     //first generate a ListViewItem and fill it up
                     ListViewItem item = new ListViewItem();
-                    item.Text = task.getName().Trim();
+                    item.Text = task.Name.Trim();
                     item.SubItems.Add(startDate.ToString("yyyy-MM-dd (MMMM dd, yyyy)"));
                     if (taskFinish != null) item.SubItems.Add(finishDate.ToString("yyyy-MM-dd (MMMM dd, yyyy)"));
 
@@ -189,19 +190,11 @@ namespace Microsoft_Project_to_Google_Calendar
 
         private void updateGoogleStatus1OnKey()
         {
-            if (toolStripTextBoxUserName.Text == "" && toolStripTextBoxPassword.Text == "")
-            {
-                toolStripStatusLabelGoogle1.Text = "Status: Waiting for the user name and password for your Google® Account.";
-            }
-            else if (toolStripTextBoxUserName.Text == "" && toolStripTextBoxPassword.Text != "")
+            if (toolStripTextBoxUserName.Text == "")
             {
                 toolStripStatusLabelGoogle1.Text = "Status: Waiting for the user name for your Google® Account.";
             }
-            else if (toolStripTextBoxUserName.Text != "" && toolStripTextBoxPassword.Text == "")
-            {
-                toolStripStatusLabelGoogle1.Text = "Status: Waiting for the password for your Google® Account.";
-            }
-            else if (toolStripTextBoxUserName.Text != "" && toolStripTextBoxPassword.Text != "")
+            else if (toolStripTextBoxUserName.Text != "")
             {
                 toolStripStatusLabelGoogle1.Text = "Status: Standing by for login. Press Login when you are ready.";
             }
@@ -213,17 +206,7 @@ namespace Microsoft_Project_to_Google_Calendar
             this.updateGoogleStatus1OnKey();
         }
 
-        private void toolStripTextBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.updateGoogleStatus1OnKey();
-        }
-
         private void toolStripTextBoxUserName_TextChanged(object sender, EventArgs e)
-        {
-            this.updateGoogleStatus1OnKey();
-        }
-
-        private void toolStripTextBoxPassword_TextChanged(object sender, EventArgs e)
         {
             this.updateGoogleStatus1OnKey();
         }
@@ -233,39 +216,53 @@ namespace Microsoft_Project_to_Google_Calendar
             toolStripStatusLabelGoogle1.Text = "Status: Logging into Google® Calendar with the Google® Account information you provided. Please wait as I retrieve your Google® Calendar list...";
             Application.DoEvents();
 
-            calendarService = new CalendarService(Application.ProductName);
+            UserCredential credential;
 
             try
             {
-                calendarService.setUserCredentials(toolStripTextBoxUserName.Text, toolStripTextBoxPassword.Text);
-                CalendarQuery query = new CalendarQuery();
-                query.Uri = new Uri("https://www.google.com/calendar/feeds/default/allcalendars/full");
-                CalendarFeed resultFeed = (CalendarFeed)calendarService.Query(query);
-                System.Diagnostics.Debug.WriteLine("Your calendars:");
-                foreach (CalendarEntry entry in resultFeed.Entries)
+                using (var stream = new FileStream("client_secret_151672359587-ar8gftg4563kqk3pbim50cooln5ls6ga.apps.googleusercontent.com.json", FileMode.Open, FileAccess.Read))
                 {
-                    System.Diagnostics.Debug.WriteLine(" >> \"" + entry.Title.Text + "\"");
-                    ListViewItem lvi = new ListViewItem(entry.Title.Text);
+                    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                        GoogleClientSecrets.Load(stream).Secrets,
+                        new [] { CalendarService.Scope.Calendar },
+                        toolStripTextBoxUserName.Text, CancellationToken.None,
+                        new FileDataStore("Microsoft Project to Google Calendar")).Result;
+                }
+                calendarService = new CalendarService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "Microsoft Project to Google Calendar"
+                });
+                //CalendarQuery query = new CalendarQuery();
+                //query.Uri = new Uri("https://www.google.com/calendar/feeds/default/allcalendars/full");
+                //CalendarFeed resultFeed = (CalendarFeed)calendarService.Query(query);
+                System.Diagnostics.Debug.WriteLine("Your calendars:");
+                this.listViewCalendars.Items.Clear();
+                foreach (CalendarListEntry entry in calendarService.CalendarList.List().Execute().Items)
+                {
+                    
+                    System.Diagnostics.Debug.WriteLine(" >> \"" + entry.Summary + "\"");
+                    ListViewItem lvi = new ListViewItem(entry.Summary);
                     lvi.Tag = entry;
                     this.listViewCalendars.Items.Add(lvi);
                 }
             }
-            catch (AuthenticationException ex)
-            {
-                toolStripStatusLabelGoogle1.Text = "Error: Login to Google® Calendar failed with the Google® Account information you provided. Please check your user name and password and try again. " + ex.Message;
-                Application.DoEvents();
+            //catch (AuthenticationException ex)
+            //{
+            //    toolStripStatusLabelGoogle1.Text = "Error: Login to Google® Calendar failed with the Google® Account information you provided. Please check your user name and try again. " + ex.Message;
+            //    Application.DoEvents();
 
-                //bounce out to let the user try again
-                return;
-            }
-            catch (GDataRequestException ex)
-            {
-                toolStripStatusLabelGoogle1.Text = "An error has occurred with the data request. Login failed. Message: " + ex.Message;
-                Application.DoEvents();
+            //    //bounce out to let the user try again
+            //    return;
+            //}
+            //catch (GDataRequestException ex)
+            //{
+            //    toolStripStatusLabelGoogle1.Text = "An error has occurred with the data request. Login failed. Message: " + ex.Message;
+            //    Application.DoEvents();
 
-                //bounce out to let the user try again
-                return;
-            }
+            //    //bounce out to let the user try again
+            //    return;
+            //}
             catch (Exception ex)
             {
                 toolStripStatusLabelGoogle1.Text = "An unknown error has occurred. Login failed. Message: " + ex.Message;
@@ -293,7 +290,7 @@ namespace Microsoft_Project_to_Google_Calendar
                 return;
             }
             //get the CalendarEntry from the selected calendar list
-            CalendarEntry calendarEntry = (CalendarEntry)this.listViewCalendars.SelectedItems[0].Tag;
+            CalendarListEntry calendarEntry = (CalendarListEntry)this.listViewCalendars.SelectedItems[0].Tag;
             //clear results from prior runs
             this.listBoxResults.Items.Clear();
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Beginning process of importing Microsoft® Project tasks into events.");
@@ -304,30 +301,31 @@ namespace Microsoft_Project_to_Google_Calendar
                 Task task = (Task)taskItem.Tag;
 
                 //convert to EventEntry
-                EventEntry eventEntry = translateProjectTaskToCalendarEntry(task);
+                Event eventEntry = translateProjectTaskToCalendarEntry(task);
 
                 //set the title and content of the entry.
-                eventEntry.Title.Text = taskItem.Text;
-                eventEntry.Content.Content = taskItem.Text;
+                eventEntry.Summary = taskItem.Text;
+                eventEntry.Description = taskItem.Text;
 
-                this.toolStripStatusLabelGoogle1.Text = "Status: Adding event " + eventEntry.Title.Text + ". Please wait...";
+                this.toolStripStatusLabelGoogle1.Text = "Status: Adding event " + eventEntry.Summary + ". Please wait...";
                 Application.DoEvents();
 
                 //do some work here
                 try
                 {
                     //insert event into Calendar
-                    System.Diagnostics.Debug.WriteLine("[*] Adding " + eventEntry.Title.Text + " at " + calendarEntry.Links[0].AbsoluteUri + ".");
-                    AtomEntry insertedEntry = calendarService.Insert(new Uri(calendarEntry.Links[0].AbsoluteUri), eventEntry);
-                    this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Added " + eventEntry.Title.Text + ". Updated at: " + insertedEntry.Updated.ToString());
+                    System.Diagnostics.Debug.WriteLine("[*] Adding " + eventEntry.Summary + " to " + calendarEntry.Summary + ".");
+                    //AtomEntry insertedEntry = calendarService.Insert(new Uri(calendarEntry.Links[0].AbsoluteUri), eventEntry);
+                    Event insertedEntry = calendarService.Events.Insert(eventEntry, calendarEntry.Id).Execute();
+                    this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Added " + eventEntry.Summary + " to " + calendarEntry.Summary + ". Updated at: " + insertedEntry.Updated.ToString());
                     addedEvents++;
                 }
                 catch (Exception ex)
                 {
-                    this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Error adding " + eventEntry.Title.Text + ". Details: " + ex.Message);
+                    this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Error adding " + eventEntry.Summary + ". Details: " + ex.Message);
                 }
             }
-            this.toolStripStatusLabelGoogle1.Text = "Success: Added all " + addedEvents + " tasks as events to your " + calendarEntry.Title.Text + " Google® Calendar.";
+            this.toolStripStatusLabelGoogle1.Text = "Success: Added all " + addedEvents + " tasks as events to your " + calendarEntry.Summary + " Google® Calendar.";
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Import is complete! Thank you for using this tool.");
             this.listBoxResults.SelectedIndex = this.listBoxResults.Items.Add("Visit http://www.daball.me/ for more about the author.");
             this.buttonClose.Show();
@@ -351,7 +349,7 @@ namespace Microsoft_Project_to_Google_Calendar
             //get Java InputStream from file stream
             java.io.ByteArrayInputStream bais = new java.io.ByteArrayInputStream(projFile);
             //get the reader
-            ProjectReader reader = ProjectReaderUtility.getProjectReader(Path.GetFileNameWithoutExtension(mppFile));
+            ProjectReader reader = ProjectReaderUtility.getProjectReader(mppFile);
             //read the file out
             return reader.read(bais);
         }
@@ -364,7 +362,7 @@ namespace Microsoft_Project_to_Google_Calendar
         protected Task[] getAllProjectTasks(ProjectFile projectFile)
         {
             //get tasks
-            java.util.List taskList = projectFile.getAllTasks();
+            java.util.List taskList = projectFile.AllTasks;
 
             //convert to array
             object[] allTaskObjs = taskList.toArray();
@@ -394,26 +392,25 @@ namespace Microsoft_Project_to_Google_Calendar
         /// </summary>
         /// <param name="task">Microsoft® Project task instance.</param>
         /// <returns>A new EventEntry from Google® Data API.</returns>
-        protected EventEntry translateProjectTaskToCalendarEntry(Task task)
+        protected Event translateProjectTaskToCalendarEntry(Task task)
         {
             //create EventEntry for Google® API
-            EventEntry eventEntry = new EventEntry();
+            Event eventEntry = new Event();
 
             //assign title to EventEntry from Microsoft® Project Task name
-            eventEntry.Title.Text = task.getName();
-            eventEntry.Content.Content = task.getName();
+            eventEntry.Summary = task.Name;
+            eventEntry.Description = task.Name;
 
             // Set a location for the event.
-            Where eventLocation = new Where();
-            eventLocation.ValueString = "Microsoft® Project";
-            eventEntry.Locations.Add(eventLocation);
+            eventEntry.Location = "Microsoft® Project";
 
             //create When object for Google® API
-            When dateTime = new When();
+            DateTime startTime = DateTime.MinValue;
+            DateTime endTime = DateTime.MinValue;
 
             //write these down
-            java.util.Date taskStart = task.getStart();
-            java.util.Date taskFinish = task.getFinish();
+            java.util.Date taskStart = task.Start;
+            java.util.Date taskFinish = task.Finish;
 
             //now split them up
             string[] taskStartComponents = new string[] { };
@@ -422,13 +419,13 @@ namespace Microsoft_Project_to_Google_Calendar
             if (taskFinish != null) taskFinishComponents = taskFinish.toString().Split(new char[] { ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
 
             //now convert them from Java to .Net and tell Google®'s When what's up
-            if (taskStart != null) dateTime.StartTime = DateTime.ParseExact(
+            if (taskStart != null) startTime = DateTime.ParseExact(
                 taskStartComponents[7] + " " + //year
                 taskStartComponents[1] + " " + //month
                 taskStartComponents[2],
                 "yyyy MMM dd", System.Globalization.CultureInfo.InvariantCulture
                 );
-            if (taskFinish != null) dateTime.EndTime = DateTime.ParseExact(
+            if (taskFinish != null) endTime = DateTime.ParseExact(
                 taskFinishComponents[7] + " " + //year
                 taskFinishComponents[1] + " " + //month
                 taskFinishComponents[2],
@@ -436,7 +433,10 @@ namespace Microsoft_Project_to_Google_Calendar
                 );
 
             //add the When to the event entry
-            eventEntry.Times.Add(dateTime);
+            if (startTime != DateTime.MinValue)
+                eventEntry.Start = new EventDateTime() { DateTime = startTime };
+            if (endTime != DateTime.MinValue)
+                eventEntry.End = new EventDateTime() { DateTime = endTime };
 
             //return the EventEntry
             return eventEntry;
